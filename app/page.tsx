@@ -22,6 +22,9 @@ export default function Home() {
       <Button bg="bg-blue-200" handleClick={() => router.push("/login")}>
         Go to Login
       </Button>
+      <Button bg="bg-blue-200" handleClick={() => router.push("/register")}>
+        Go to Register
+      </Button>
     </div>
   );
 }
