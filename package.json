@@ -6,15 +6,19 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "flowbite-react patch"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
     "@radix-ui/themes": "^3.2.1",
     "@reduxjs/toolkit": "^2.8.2",
+    "@tanstack/react-query": "^5.81.2",
+    "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "delay": "^6.0.0",
+    "flowbite-react": "^0.11.8",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.522.0",
     "next": "15.3.3",

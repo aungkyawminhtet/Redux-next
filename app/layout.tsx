@@ -4,6 +4,8 @@ import "./globals.css";
 import StoreProvider from "@/components/store.provider";
 import "@radix-ui/themes/styles.css";
 import ThemeProvider from "@/components/themeProvider";
+import QueryProvider from "@/components/query.provider";
+import { ThemeModeScript } from "flowbite-react";
 
 
 const geistSans = Geist({
@@ -28,12 +30,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <ThemeModeScript />
+      </head>
       <body>
-        <ThemeProvider>
-          <StoreProvider>
-            <main>{children}</main>
-          </StoreProvider>
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider>
+            <StoreProvider>
+              <main>{children}</main>
+            </StoreProvider>
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

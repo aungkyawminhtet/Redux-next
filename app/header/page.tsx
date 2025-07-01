@@ -7,6 +7,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const page = () => {
   const [isToggle, setIsToggle] = useState(false);
+  const [selected, setSelected] = useState("");
+
+  const handleChange = (e: any) => {
+    setSelected(e.target.value);
+    console.log("You selected:", e.target.value);
+  };
   return (
     <div className="flex flex-col">
       <AnimatePresence initial={false}>
@@ -45,6 +51,13 @@ const page = () => {
           alias!
         </AlertDescription>
       </Alert>
+      <div className="flex flex-col bg-gray-200">
+        <select value={selected} onChange={handleChange}>
+          <option value="">Please select</option>
+          <option value="apple">Apple</option>
+          <option value="banana">Banana</option>
+        </select>
+      </div>
     </div>
   );
 };
