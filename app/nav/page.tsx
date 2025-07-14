@@ -5,11 +5,10 @@ import axio from "axios";
 // import { Dropdown, DropdownItem } from "flowbite-react";
 import { Button } from "flowbite-react";
 import { motion, animate, AnimatePresence } from "framer-motion";
+import SelectItem from "@/components/SelectItem";
 
 const page = () => {
   //   const [isdata, setisData] = useState<any>([]);
-  const [name, setName] = useState<string>("");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const queryClient = useQueryClient();
   const { data, isError, isSuccess } = useQuery({
     queryKey: ["get-all-posts"],
@@ -43,12 +42,6 @@ const page = () => {
     mutateAsync(data);
   };
 
-  const handlestate = (value: string) => {
-    setName(value);
-    console.log("i am close");
-    setIsOpen(false);
-  };
-
   return (
     <div className="flex flex-col ">
       <h1>User lists</h1>
@@ -56,51 +49,7 @@ const page = () => {
       <div className="flex">
         <div className="bg-red-300 p-6">adding</div>
       </div>
-      <div className="w-[300px]">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className=" w-full text-white cursor-pointer py-3 bg-[#4E6688] rounded shadow p-2"
-        >
-          {name ? name : "Default Label"}
-        </button>
-        <AnimatePresence initial={false}>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="bg-gray-70 p-1 rounded shadow-md">
-                <div
-                  className="hover:bg-gray-200 p-2 transition-duration-400 transition"
-                  onClick={() => handlestate("Dashboard")}
-                >
-                  Dashboard
-                </div>
-                <div
-                  className="hover:bg-gray-200 p-2 transition-duration-400 transition"
-                  onClick={() => handlestate("Settings")}
-                >
-                  Settings
-                </div>
-                <div
-                  className="hover:bg-gray-200 p-2 transition-duration-400 transition"
-                  onClick={() => handlestate("Earnings")}
-                >
-                  Earnings
-                </div>
-                <div
-                  className="hover:bg-gray-200 p-2 transition-duration-400 transition"
-                  onClick={() => handlestate("Sign out")}
-                >
-                  Sign out
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+     <SelectItem />
       <Button pill onClick={handleClick} className="mt-4">
         Add post
       </Button>
